@@ -8,3 +8,6 @@ Team Members:
 - Rohan David
 - Alexander Kostov
 - Diksha Kushwah
+
+Branching strategy: main (protected) → dev → feature/* branches, merged via reviewed pull request
+Branch protection on main: pull request + approval required before merging, force pushes disabled
