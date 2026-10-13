@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#backend
+*.pyc
+__pycache__/
+venv/
+*.db 
+
+*.sqlite3
+.env
+
+# just for security right now, I wanna make sure I dont fuck up and leak creds
+settings.py
