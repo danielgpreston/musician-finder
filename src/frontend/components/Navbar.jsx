@@ -1,12 +1,29 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { House, Compass, UserRound } from "lucide-react";
+import "./Navbar.css";
+
+const navItems = [
+  { path: "/", label: "Home", icon: House },
+  { path: "/discover", label: "Discover", icon: Compass },
+  { path: "/profile/me", label: "Profile", icon: UserRound },
+];
 
 function Navbar() {
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/discover">Discover</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
+    <nav className="bottom-nav" aria-label="Main navigation">
+      {navItems.map(({ path, label, icon: Icon }) => (
+        <NavLink
+          key={path}
+          to={path}
+          end={path === "/"}
+          className={({ isActive }) =>
+            `nav-item ${isActive ? "active" : ""}`
+          }
+        >
+          <Icon size={23} strokeWidth={1.8} />
+          <span>{label}</span>
+        </NavLink>
+      ))}
     </nav>
   );
 }

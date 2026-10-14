@@ -10,15 +10,17 @@ import Register from "./pages/Register";
 function App() {
   return (
     <>
-      <Navbar />
+      <main className="app-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/discover" element={<Discover />} />
+          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </main>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/discover" element={<Discover />} />
-        <Route path="/profile/:id" element={<Profile />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <Navbar />
     </>
   );
 }
