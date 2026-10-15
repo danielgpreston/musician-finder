@@ -1,0 +1,42 @@
+:root {
+  font-family: Inter, system-ui, sans-serif;
+
+  --bg-primary: #f7f7f5;
+  --bg-card: #ffffff;
+
+  --text-primary: #202522;
+  --text-secondary: #6e746f;
+
+  --border-color: #e5e7e3;
+  --accent-color: #202522;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.app-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 20px calc(96px + env(safe-area-inset-bottom));
+}
