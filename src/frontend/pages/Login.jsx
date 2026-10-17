@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Music2 } from "lucide-react";
-import "./Login.css";
+import "./Auth.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -43,19 +43,19 @@ function Login() {
   }
 
   return (
-    <div className="login-page">
-      <div className="login-container">
+    <div className="auth-page">
+      <div className="auth-container">
 
-        <div className="login-brand">
-          <div className="login-logo">
+        <div className="auth-brand">
+          <div className="auth-logo">
             <Music2 size={30} />
           </div>
 
           <h1>Musician Finder</h1>
-          <p>Find your band.</p>
+          <p>Find your people. Find your band.</p>
         </div>
 
-        <form className="login-card" onSubmit={handleSubmit}>
+        <form className="auth-card" onSubmit={handleSubmit}>
           <h2>Welcome back</h2>
           <p>Sign in to discover musicians near you.</p>
 
@@ -79,13 +79,13 @@ function Login() {
             required
           />
 
-          {error && <p className="login-error">{error}</p>}
+          {error && <p className="auth-error">{error}</p>}
 
           <button type="submit" disabled={loading}>
             {loading ? "Signing in..." : "Sign in"}
           </button>
 
-          <div className="login-footer">
+          <div className="auth-footer">
             Don't have an account? <Link to="/register">Sign up</Link>
           </div>
         </form>
