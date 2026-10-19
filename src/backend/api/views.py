@@ -36,3 +36,44 @@ def login_view(request):
 def logout_view(request):
     Token.objects.filter(user=request.user).delete()
     return Response({"message": "Logged out."})
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
+def register_view(request):
+    username = str(request.data.get("username", "")).strip()
+    email = str(request.data.get("email", "")).strip()
+    password = str(request.data.get("password", ""))
+
+    if not username or not email or not password:
+        return Response(
+            {"error": "Username, email, and password are required."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    if len(password) < 8:
+        return Response(
+            {"error": "Password must be at least 8 characters."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    if User.objects.filter(username__iexact=username).exists():
+        return Response(
+            {"error": "Username already exists."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    if User.objects.filter(email__iexact=email).exists():
+        return Response(
+            {"error": "Email already registered."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    user = User.objects.create_user(username, email, password)
+    token, _ = Token.objects.get_or_create(user=user)
+    return Response(
+        {
+            "message": "Registration successful.",
+            "token": token.key
+        },
+        status=status.HTTP_201_CREATED
+    )

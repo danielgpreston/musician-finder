@@ -18,23 +18,25 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("/api/auth/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        credentials: "include",
         body: JSON.stringify({
           email: email,
           password: password
         })
       });
+      const data = await response.json();
 
-      if (response.ok) {
-        navigate("/home");
-      } else {
-        setError("Invalid email or password.");
+      if (!response.ok) {
+        setError(data.error || "Invalid email or password.");
+        return;
       }
+      sessionStorage.setItem("authToken", data.token);
+      navigate("/home");
+
     } catch (error) {
       setError("Unable to connect to the server.");
     } finally {
@@ -79,7 +81,11 @@ function Login() {
             required
           />
 
-          {error && <p className="auth-error">{error}</p>}
+          {error && (
+              <p className="auth-error" role="alert">
+                {error}
+              </p>
+          )}
 
           <button type="submit" disabled={loading}>
             {loading ? "Signing in..." : "Sign in"}
