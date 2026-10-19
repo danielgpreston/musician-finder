@@ -12,6 +12,8 @@ function Register() {
   });
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -22,9 +24,10 @@ function Register() {
     }));
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     setError("");
+    setSuccess("");
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
@@ -36,8 +39,36 @@ function Register() {
       return;
     }
 
-    // Backend registration will be implemented later.
-    console.log("Registration form passed validation.");
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/auth/register/", {
+        method: "POST",
+        headers: {"Content-type": "application/json"},
+
+        body: JSON.stringify({
+          username: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Registration failed.");
+      }
+      setSuccess("Account successfully created.");
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -111,8 +142,14 @@ function Register() {
             </p>
           )}
 
-          <button type="submit">
-            Create account
+          {success && (
+            <p role="status">
+              {success}
+            </p>
+          )}
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Creating Account" : "Create account"}
           </button>
 
           <div className="auth-footer">
