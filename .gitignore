@@ -33,4 +33,4 @@ venv/
 .env
 
 # just for security right now, I wanna make sure I dont fuck up and leak creds
-settings.py
+# settings.py | getting rid of this now, will make it back into .gitignore for testing into future.
