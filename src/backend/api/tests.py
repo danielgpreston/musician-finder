@@ -38,6 +38,15 @@ class LoginTests(APITestCase):
         res = self.client.post(LOGIN_URL, {"email": "nobody@example.com", "password": "testpass123"}, format="json")
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
+    def test_login_sql_injection_attempt_is_rejected(self):
+        res = self.client.post(
+            LOGIN_URL,
+            {"email": "' OR '1'='1", "password": "' OR '1'='1"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertFalse(Token.objects.exists())
+
     def test_login_empty_body(self):
         res = self.client.post(LOGIN_URL, {}, format="json")
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
