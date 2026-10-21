@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { MapPin, CalendarDays, ExternalLink, Camera, Video } from "lucide-react";
 import { mockMusicians } from "../data/mockMusicians";
 import "./Profile.css";
 
@@ -8,6 +8,7 @@ function Profile() {
   return (
     <main className="profile-page">
       <section className="profile-card">
+
         <header className="profile-header">
           <div className="profile-avatar">
             {musician.name.charAt(0)}
@@ -15,6 +16,7 @@ function Profile() {
 
           <div>
             <h1>{musician.name}</h1>
+
             <p className="profile-location">
               <MapPin size={16} />
               {musician.location}
@@ -29,6 +31,7 @@ function Profile() {
 
         <section className="profile-section">
           <h2>Instruments</h2>
+
           <div className="profile-tags">
             {musician.instruments.map((instrument) => (
               <span className="profile-tag" key={instrument}>
@@ -40,6 +43,7 @@ function Profile() {
 
         <section className="profile-section">
           <h2>Genres</h2>
+
           <div className="profile-tags">
             {musician.genres.map((genre) => (
               <span className="profile-tag" key={genre}>
@@ -48,6 +52,69 @@ function Profile() {
             ))}
           </div>
         </section>
+
+        <section className="profile-section">
+          <h2>Experience</h2>
+
+          <div className="profile-experience">
+            <CalendarDays size={18} />
+            <span>
+              {musician.experience}{" "}
+              {musician.experience === 1 ? "year" : "years"} of experience
+            </span>
+          </div>
+        </section>
+
+        <section className="profile-section">
+          <h2>Looking For</h2>
+
+          {musician.lookingFor?.length > 0 ? (
+            <div className="profile-tags">
+              {musician.lookingFor.map((instrument) => (
+                <span className="profile-tag" key={instrument}>
+                  {instrument}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <p className="profile-muted">
+              Not currently looking for collaborators.
+            </p>
+          )}
+        </section>
+
+        <section className="profile-section">
+          <h2>Connect</h2>
+
+          <div className="profile-socials">
+            {musician.socials?.instagram && (
+              <a
+                href={musician.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="profile-social-link"
+              >
+                <Camera size={18} />
+                Instagram
+                <ExternalLink size={14} />
+              </a>
+            )}
+
+            {musician.socials?.youtube && (
+              <a
+                href={musician.socials.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="profile-social-link"
+              >
+                <Camera size={18} />
+                YouTube
+                <ExternalLink size={14} />
+              </a>
+            )}
+          </div>
+        </section>
+
       </section>
     </main>
   );
