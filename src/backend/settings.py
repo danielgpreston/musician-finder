@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 ]
 
@@ -146,3 +147,9 @@ if not DEBUG:
     # SECURE_SSL_REDIRECT = True | No SSL cert :[
     # CSRF_COOKIE_SECURE = True | Temp.
     # SESSION_COOKIE_SECURE = True | Temp. DO NOT DELETE!
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
