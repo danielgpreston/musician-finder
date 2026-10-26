@@ -14,13 +14,15 @@ export const mockMusicians = [
   },
   {
     id: 2,
-    name: "Tyler R",
+    name: "Tyler Ramsawak",
     location: "Gainesville, FL",
     bio: "Drummer interested in collaborating with local musicians.",
     instruments: ["Drums"],
     genres: ["Rock", "Alternative"],
     experience: 3,
     lookingFor: ["Guitar", "Bass"],
-    socials: {}
+    socials: {
+      instagram: "https://instagram.com/danielprest0n",
+    }
   }
 ];
