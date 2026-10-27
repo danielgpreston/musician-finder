@@ -3,7 +3,7 @@ import { House, Compass, UserRound } from "lucide-react";
 import "./Navbar.css";
 
 const navItems = [
-  { path: "/", label: "Home", icon: House },
+  { path: "/home", label: "Home", icon: House },
   { path: "/discover", label: "Discover", icon: Compass },
   { path: "/profile/me", label: "Profile", icon: UserRound },
 ];
