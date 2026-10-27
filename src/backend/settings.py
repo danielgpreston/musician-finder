@@ -85,12 +85,15 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("POSTGRES_DB", "backend"),
-        'USER': os.getenv("POSTGRES_USER", ""),
-        'PASSWORD': os.getenv("POSTGRES_PASSWORD", ""),
-        'HOST': os.getenv("POSTGRES_HOST", "localhost"),
-        'PORT': os.getenv("POSTGRES_PORT", "6767"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3', # for now and proof of concept, when scaled, we use PostgreSQL
+    #'default': {
+        #'ENGINE': 'django.db.backends.postgresql',
+        #'NAME': os.getenv("POSTGRES_DB", "backend"),
+        #'USER': os.getenv("POSTGRES_USER", ""),
+        #'PASSWORD': os.getenv("POSTGRES_PASSWORD", ""),
+        #'HOST': os.getenv("POSTGRES_HOST", "localhost"),
+        #'PORT': os.getenv("POSTGRES_PORT", "6767"),
     }
 }
 
