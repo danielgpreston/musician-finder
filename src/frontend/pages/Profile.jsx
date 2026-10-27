@@ -1,9 +1,23 @@
 import { MapPin, CalendarDays, ExternalLink, Camera, Video } from "lucide-react";
 import { mockMusicians } from "../data/mockMusicians";
+import { useParams } from "react-router-dom";
 import "./Profile.css";
 
 function Profile() {
-  const musician = mockMusicians[0];
+  const { id } = useParams();
+
+  const musician = mockMusicians.find((musician) => musician.id === Number(id));
+
+  if (!musician) {
+    return (
+      <main className="profile-page">
+        <section className="profile-card">
+          <h1>Musician not found.</h1>
+          <p>This profile doesn't exist.</p>
+        </section>
+      </main>
+    )
+  }
 
   return (
     <main className="profile-page">
