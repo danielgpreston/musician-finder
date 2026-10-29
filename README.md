@@ -86,6 +86,7 @@ To stop the application, return to the terminal and press Ctrl + C
 - **Icons:** Lucide React
 - **Styling:** CSS
 
+
 ## Backend
 
 ### 1. Follow Previous Step 1 from Frontend setup.
@@ -94,7 +95,7 @@ git clone <repo-url>
 ``` 
 etc.
 
-### ### 2. Navigate to the Backend Directory
+### 2. Navigate to the Backend Directory
 
 The Django application is located inside `src/backend`.
 
@@ -104,14 +105,16 @@ cd backend
 ```
 ### 3. Install Packages
 
-**Installing using python (with `/venv/` and `requirments.txt`)
-Install the required packages:
+**Installing using python (with `/venv/` and `requirments.txt`)**
+
+*Install the required packages:*
 
 ```bash
 # Create the virtual environment for packages
 python -m venv venv
 ```
 *Activate it*
+
 ```bash
 # Windows
 .\venv\Scripts\activate # usually a .ps1 file
