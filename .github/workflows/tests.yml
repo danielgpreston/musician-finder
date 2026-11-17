@@ -19,4 +19,4 @@ jobs:
         working-directory: src/backend
         env:
           PYTHONPATH: ${{ github.workspace }}/src
-        run: python manage.py test api --settings=backend.test_settings
+        run: python manage.py test api -t . --settings=backend.test_settings
