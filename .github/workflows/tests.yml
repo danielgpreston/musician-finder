@@ -1,0 +1,22 @@
+name: Backend tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install dependencies
+        run: pip install django djangorestframework django-cors-headers python-dotenv
+      - name: Run backend tests
+        working-directory: src/backend
+        env:
+          PYTHONPATH: ${{ github.workspace }}/src
+        run: python manage.py test api --settings=backend.test_settings
