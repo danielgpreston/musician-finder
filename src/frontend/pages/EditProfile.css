@@ -1,0 +1,31 @@
+.edit-profile-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px 16px 100px;
+}
+
+.edit-profile-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.edit-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.edit-profile-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.edit-profile-back {
+  display: flex;
+  align-items: center;
+  color: var(--text-primary);
+  text-decoration: none;
+}

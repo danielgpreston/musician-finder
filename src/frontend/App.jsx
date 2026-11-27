@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AppLayout from "./components/MainLayout";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route element={<AppLayout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/discover" element={<Discover />} />
+          <Route path="/profile/edit" element={<EditProfile />} />
           <Route path="/profile/:id" element={<Profile />} />
         </Route>
 

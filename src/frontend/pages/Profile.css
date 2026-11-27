@@ -112,3 +112,22 @@
   outline: 2px solid var(--accent-color);
   outline-offset: 3px;
 }
+
+.edit-profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.edit-profile-button:hover {
+  background: var(--bg-primary);
+}

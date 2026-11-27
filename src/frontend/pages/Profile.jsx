@@ -1,6 +1,6 @@
-import { MapPin, CalendarDays, ExternalLink, Camera, Video, Globe } from "lucide-react";
+import { MapPin, CalendarDays, ExternalLink, Camera, Video, Globe, Pencil } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import "./Profile.css";
 
 function Profile() {
@@ -107,6 +107,13 @@ function Profile() {
           </div>
         </header>
         
+        {id == "me" && (
+          <Link to="/profile/edit" className="edit-profile-button">
+            <Pencil size={16} />
+            Edit Profile
+          </Link>
+        )}
+
         <section className="profile-section">
           <h2>About</h2>
           <p>{musician.bio || "No bio available."}</p>
