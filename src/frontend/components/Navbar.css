@@ -46,3 +46,14 @@
 .nav-item.active svg {
   stroke-width: 2.3;
 }
+
+.logout-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.logout-button:hover {
+  color: #dc2626;
+}
