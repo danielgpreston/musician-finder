@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-
-import Navbar from "./components/Navbar";
+import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 import Discover from "./pages/Discover";
 import Profile from "./pages/Profile";
@@ -22,6 +21,15 @@ function App() {
           <Route path="/discover" element={<Discover />} />
           <Route path="/profile/edit" element={<EditProfile />} />
           <Route path="/profile/:id" element={<Profile />} />
+          <Route
+            path="/admin"
+            element={
+              sessionStorage.getItem("authToken") &&
+              sessionStorage.getItem("isAdmin") === "true"
+                ? <Admin />
+                : <Navigate to="/home" replace />
+            }
+          />
         </Route>
 
       </Routes>

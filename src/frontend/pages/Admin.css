@@ -1,0 +1,166 @@
+.admin-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    padding-bottom: 100px;
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.admin-header p {
+    margin: 5px 0 0;
+    color: #777;
+}
+
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.admin-stat-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.admin-stat-card h3 {
+    font-size: 14px;
+    margin: 0;
+    color: #777;
+}
+
+.admin-stat-card p {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0 0;
+}
+
+.admin-user-management h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.admin-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.admin-search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font-size: 14px;
+}
+
+.admin-search:focus-within {
+    outline: 2px solid #777;
+}
+
+.admin-user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin-user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    gap: 15px;
+}
+
+.admin-user-info h3 {
+    margin: 0 0 5px;
+}
+
+.admin-user-info p {
+    margin: 0 0 8px;
+    color: #777;
+    overflow-wrap: anywhere;
+}
+
+.admin-status-active {
+    color: #16a34a;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.admin-status-inactive {
+    color: #dc2626;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.admin-deactivate-button,
+.admin-activate-button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.admin-deactivate-button {
+    background-color: #dc2626;
+}
+
+.admin-deactivate-button:hover {
+    background-color: #b91c1c;
+}
+
+.admin-activate-button {
+    background-color: #16a34a;
+}
+
+.admin-activate-button:hover {
+    background-color: #15803d;
+}
+
+@media (max-width: 600px) {
+    .admin-page {
+        padding: 16px;
+        padding-bottom: 100px;
+    }
+
+    .admin-stats {
+        gap: 8px;
+    }
+
+    .admin-stat-card {
+        padding: 12px 5px;
+    }
+
+    .admin-stat-card h3 {
+        font-size: 12px;
+    }
+
+    .admin-user-card {
+        flex-wrap: wrap;
+    }
+}
