@@ -35,6 +35,7 @@ function Login() {
         return;
       }
       sessionStorage.setItem("authToken", data.token);
+      sessionStorage.setItem("isAdmin", String(data.is_staff === true));
       navigate("/home");
 
     } catch (error) {

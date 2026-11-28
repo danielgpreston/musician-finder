@@ -1,15 +1,19 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { House, Compass, UserRound, LogOut } from "lucide-react";
+import { House, Compass, UserRound, LogOut, ShieldCheck } from "lucide-react";
 import "./Navbar.css";
 
 const navItems = [
   { path: "/home", label: "Home", icon: House },
   { path: "/discover", label: "Discover", icon: Compass },
   { path: "/profile/me", label: "Profile", icon: UserRound },
+  { path: "/admin", label: "Admin", icon: ShieldCheck },
 ];
 
 function Navbar() {
   const navigate = useNavigate();
+
+  const isAdmin = sessionStorage.getItem("isAdmin") === "true";
+  const visibleNavItems = navItems.filter((item) => item.path !== "/admin" || isAdmin);
 
   async function handleLogout() {
     const token = sessionStorage.getItem("authToken");
@@ -29,6 +33,7 @@ function Navbar() {
       }
 
       sessionStorage.removeItem("authToken");
+      sessionStorage.removeItem("isAdmin");
       navigate("/login", { replace: true });
 
     } catch (error) {
@@ -39,7 +44,7 @@ function Navbar() {
 
   return (
     <nav className="bottom-nav" aria-label="Main navigation">
-      {navItems.map(({ path, label, icon: Icon }) => (
+      {visibleNavItems.map(({ path, label, icon: Icon }) => (
         <NavLink
           key={path}
           to={path}
